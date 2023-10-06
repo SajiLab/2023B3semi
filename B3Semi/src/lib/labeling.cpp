@@ -42,7 +42,7 @@ static void update_label_hash(std::unordered_map<int32_t, int32_t> &hash_table, 
   }
 }
 
-// 初期ラベルをキーとし, 新しいラベル番号(ゼロ始まりに再割り当て済み)をヴァリューとするハッシュテーブルを返す
+// 初期ラベルをキーとし, 新しいラベル番号(ゼロ始まりに再割り当て済み)をvalueとするハッシュテーブルを返す
 static std::unordered_map<int32_t, int32_t> create_latest_label_table(
     const std::unordered_map<int32_t, int32_t> &hash_table)
 {
@@ -54,7 +54,7 @@ static std::unordered_map<int32_t, int32_t> create_latest_label_table(
     label_list_map[value] = value;
 
   /* label_list_map(ゼロ始まりで空白のないラベルの再割り当て) */
-  /* このブロックは, ブロック以降使用しないvectorのライフタイムを縮めているだけです．つまり？かっこつけです. */
+  /* このブロックは, ブロック以降使用しないvectorのライフタイムを縮めているだけです. */
   {
     std::vector<int32_t> list_using_sort;
     for (const auto &[_, value] : label_list_map)
@@ -96,7 +96,7 @@ ImageMatI labeled_region(const ImageMat &binarize_img)
 
   int new_label = 1; // new_labelは常にラベルを新しく入れるテーブルを指す
   std::unordered_map<int32_t, int32_t> hash_table;
-  hash_table[0] = 0; // 確定で背景ラベルを登録しておいてほしい, 関数化したら0が入らなくなったので... 本来こうすべきだと思います
+  hash_table[0] = 0; // 背景ラベルを登録
 
 
   for (int y = 0; y < binarize_img.m_height; y++)
@@ -125,32 +125,37 @@ ImageMatI labeled_region(const ImageMat &binarize_img)
       // どちらも黒
       if (left_pixel == 0 && under_pixel == 0)
       {
-        hash_table.emplace(new_label, new_label);
-        labeled_img.setPixel(x, y, 0, new_label); // 新しいラベルを割り当て
-        new_label++;                              // 次の新しいラベルに更新
+        //
+        // 処理を記述
+        //
       }
       // left_pixelにラベルあり
       else if (left_pixel != 0 && under_pixel == 0)
-        labeled_img.setPixel(x, y, 0, left_pixel); // 左のラベルをそのままコピー
+      {
+        //
+        // 処理を記述
+        //
+      }
 
       // under_pixelにラベルあり
       else if (left_pixel == 0 && under_pixel != 0)
-        labeled_img.setPixel(x, y, 0, under_pixel); // 下のラベルをそのままコピー
+      {
+        //
+        // 処理を記述
+        //
+      }
 
       // どちらにもラベル
       else if (left_pixel != 0 && under_pixel != 0)
       {
-        hash_table[left_pixel] = under_pixel;           // hash_tableを更新
-        labeled_img.setPixel(x, y, 0, under_pixel);     // 新しい方にする
-        labeled_img.setPixel(x - 1, y, 0, under_pixel); // 新しいラベル(left)を古いラベル(under)に更新
-
-        const auto pre_left_pixel = labeled_img.getPixel(x - 1, y, 0);
-        update_label_hash(hash_table, pre_left_pixel, under_pixel); // ハッシュテーブルの一括更新
+        //
+        // 処理を記述
+        //
       }
     }
   }
 
-  /* ラベル画像の塗りなおし (座標は関係ないので簡潔に書ける) */
+  /* ラベル画像の塗りなおし */
   hash_table = create_latest_label_table(hash_table);
   for (auto &pix : labeled_img.m_pixels)
     pix = hash_table[pix];
@@ -158,7 +163,7 @@ ImageMatI labeled_region(const ImageMat &binarize_img)
   return labeled_img;
 }
 
-//ImaegMatIクラスの画像を可視化できるようにする
+//ImaegMatIクラスの画像を可視化する
 /**
  * @param labeled_img ラベリング処理済み1チャンネル画像
  * @return 可視化処理済みImageMatクラス1チャンネル画像
