@@ -25,8 +25,7 @@ ImageMat color2gray(const ImageMat &color_img)
   // 3チャンネルの平均値を1チャンネル画像の画素値にする
   for (int i = 0; i < gray_img.m_length; i++)
   {
-    const int average = (color_img.m_pixels[i * 3] + color_img.m_pixels[i * 3 + 1] + color_img.m_pixels[i * 3 + 2]) / 3;
-    gray_img.m_pixels[i] = average;
+    // 処理を記述
   }
 
   return gray_img;
@@ -39,20 +38,18 @@ ImageMat color2gray(const ImageMat &color_img)
 */
 ImageMat gray2color(const ImageMat &gray_img)
 {
-  ImageMat color_img = gray_img;
+  //
+  // 処理を記述
+  //
 
-  color_img.m_ch = 3;
-  color_img.m_length = color_img.m_width * color_img.m_height * color_img.m_ch;
-
-  color_img.m_pixels.resize(color_img.m_length);
-
-  for (int i = 0; i < gray_img.m_length; i++)
-  {
-    color_img.m_pixels[i * 3] = color_img.m_pixels[i * 3 + 1] = color_img.m_pixels[i * 3 + 2] = gray_img.m_pixels[i];
-  }
   // リターンした画像は3つのチャンネルすべてが同じ値なのでグレーになります
   return color_img;
 }
+
+
+
+//此処から先は完成しています
+
 
 // 3チャンネルを1チャンネルずつに分け、1チャンネル分の画像データ3つを配列3つで返す
 /**
