@@ -16,13 +16,22 @@ std::array<ImageMatD, 2> extract_edge(const ImageMat &gray_image) // 例はprewi
 {
   
   ImageMatD edge_angle, edge_strength;
-  double prewitt_row[3][3] = {{-1, 0, 1}, 
-                              {-1, 0, 1}, 
-                              {-1, 0, 1}};
+  double prewitt_row[3][3] = {{□, □, □}, 
+                              {□, □, □}, 
+                              {□, □, □}};
   
-  double prewitt_col[3][3] = {{-1, -1, -1}, 
-                              {0, 0, 0}, 
-                              {1, 1, 1}};
+  double prewitt_col[3][3] = {{□, □, □}, 
+                              {□, □, □}, 
+                              {□, □, □}};
+
+  //ラプラシアンフィルタ
+  double laplace_row[3][3] = {{□, □, □}, 
+                              {□, □, □}, 
+                              {□, □, □}};
+  
+  double laplace_col[3][3] = {{□, □, □}, 
+                              {□, □, □}, 
+                              {□, □, □}};
 
   //クラスの初期値を設定
   edge_angle.m_header = edge_strength.m_header = gray_image.m_header;
@@ -48,8 +57,8 @@ std::array<ImageMatD, 2> extract_edge(const ImageMat &gray_image) // 例はprewi
       {
         for(int row = -1; row <= 1; row++)
         { 
-          dx += gray_image.m_pixels[(x + row) + (y + col) * gray_image.m_width] * prewitt_row[row + 1][col + 1];
-          dy += gray_image.m_pixels[(x + row) + (y + col) * gray_image.m_width] * prewitt_col[row + 1][col + 1];
+          dx += □;  //横向きにフィルタをかける
+          dy += □;  //縦向きにフィルタをかける
         }
       }
 
@@ -70,8 +79,9 @@ std::array<ImageMatD, 2> extract_edge(const ImageMat &gray_image) // 例はprewi
   {
     for(int x = 0; x < edge_angle.m_width; x++)
     {
-      double norm = (edge_angle.getPixel(x, y, 0) - min_angle) / (max_angle - min_angle) * 255.0;
-      edge_angle.setPixel(x, y, 0, norm);
+      //
+      // 処理を記述
+      //
     }
   }
 

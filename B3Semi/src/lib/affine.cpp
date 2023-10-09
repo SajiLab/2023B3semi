@@ -27,7 +27,7 @@ ImageMat affine_transform(const ImageMat &gray_image)
   // アフィン逆変換
   double mat_determinant = param_a * param_e - param_b * param_d; 
   
-  if (fabs(mat_determinant) < DBL_EPSILON) // mat_determinantが極小すぎる場合に処理ができない
+  if (fabs(mat_determinant) < DBL_EPSILON) // mat_determinantが極小すぎる場合に処理ができないため
   {
     std::cout << "error! determinant = 0" << std::endl;
     return affine_image;

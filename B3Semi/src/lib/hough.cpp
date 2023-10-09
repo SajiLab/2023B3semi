@@ -112,7 +112,7 @@ ImageMat draw_line(const ImageMatI &hough_image, const ImageMat &edge_strength)
       {
         int bi_x, bi_y;
         int new_index;
-        if (10 < theta && theta < 170)
+        if (0 < theta && theta <= 90)
         {
           for (bi_x = 0; bi_x < edge_strength.m_width; bi_x++)
           {
@@ -140,7 +140,7 @@ ImageMat draw_line(const ImageMatI &hough_image, const ImageMat &edge_strength)
         {
           for (bi_y = 0; bi_y < edge_strength.m_height; bi_y++)
           {
-            bi_x = (int)((double)((-sin(radian) * bi_y + rho) / cos(radian)));
+            bi_x = rho;
             new_index = (bi_x + bi_y * edge_strength.m_width) * 3;
 
             line_image.setPixel(bi_x, bi_y, 0, 0);
