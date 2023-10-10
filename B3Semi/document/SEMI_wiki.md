@@ -53,13 +53,23 @@ VSCodeのインストールが完了したら、コマンドパレットに以�
 ```
 C:\Users\Username> Ubuntu
 ```
-Ubuntuが開きますので、以下の2つをコードを入れて、build-essentialとcmakeをインストールします。先頭の`$`は入れないでください。
+
+Ubuntuが開きますので、Ubuntuのアップグレード、アップグレードを先に済ませます。以下のコマンドを入れてください。
+
+```
+$ sudo apt update
+$ sudo apt upgrade 
+```
+
+
+以下の2つをコードを入れて、build-essentialとcmakeをインストールします。先頭の`$`は入れないでください。
+
 ```
 $ sudo apt install build-essential
 $ sudo apt install cmake
 ```
 
-インストールが完了したら、VSCodeを開きます。
+インストールが完了したら、VSCodeを開きます。既にVSCode上で実行している場合には不要です。
 ```
 $ code
 ```
@@ -82,11 +92,18 @@ $ git clone https://github.com/SajiLab/2023B3semi.git
 これでゼミ用の環境構築は終了です。
 
 最後に動作をテストします。
-B3Semiディレクトリにて以下のコマンドを入れてください。
+B3Semiディレクトリに移動します。
+
+```
+$ cd B3Semi
+```
+
+シェルコマンドを実行してみてください。
 
 ```
 $ sh build_run.sh
 ```
+
 
 "Hello, World"がターミナルに出力されればOKです。
 
@@ -104,5 +121,21 @@ Markdownの記述で使いやすそうな記事です。
 
 ## Texでの記述について
 GitLabのwikiに記載がありそうなので適当に持ってくる(~~単純に自分の環境に落とし込めてないから説明できないよーの状態~~)
+
+## VSCodeおすすめの拡張機能
+
+リンクを貼っておきますので適宜活用してください。
+
+[VSCode日本語拡張機能](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja)
+
+[WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+
+[C/C++ 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+
+
+
+
+
+
 
 
