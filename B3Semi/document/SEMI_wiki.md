@@ -25,7 +25,7 @@
 |CPU |Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz   2.30 GHz |
 |メモリ|8.00GB|
 |OS|Windows 10 Pro|
-|使用言語| C++11|
+|使用言語| C++17|
 
 <a id="anchor2"></a>
 
@@ -76,7 +76,7 @@ $ cd saji-lab
 
 ディレクトリ内に講義資料をcloneします。
 ```
-$ git clone URLを貼るよ~~~~
+$ git clone https://github.com/SajiLab/2023B3semi.git
 ```
 
 これでゼミ用の環境構築は終了です。
@@ -85,7 +85,7 @@ $ git clone URLを貼るよ~~~~
 B3Semiディレクトリにて以下のコマンドを入れてください。
 
 ```
-$ sh builtrun.sh
+$ sh build_run.sh
 ```
 
 "Hello, World"がターミナルに出力されればOKです。
@@ -94,7 +94,7 @@ $ sh builtrun.sh
 
 ## Markdownの記述について
 
-Markdownの記述で使いやすそうな記事のです。
+Markdownの記述で使いやすそうな記事です。
 
 [リンク1](https://qiita.com/toyokky/items/47a5a56c20ad99e1784c)
 
@@ -103,6 +103,6 @@ Markdownの記述で使いやすそうな記事のです。
 <a id="anchor4"></a>
 
 ## Texでの記述について
-GitLabのwikiに記載がありそうなので適当に持ってくる(~~めんどい~~)
+GitLabのwikiに記載がありそうなので適当に持ってくる(~~単純に自分の環境に落とし込めてないから説明できないよーの状態~~)
 
 
