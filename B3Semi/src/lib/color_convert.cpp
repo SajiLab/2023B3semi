@@ -38,6 +38,7 @@ ImageMat color2gray(const ImageMat &color_img)
 */
 ImageMat gray2color(const ImageMat &gray_img)
 {
+  ImageMat color_img;
   //
   // 処理を記述
   //
