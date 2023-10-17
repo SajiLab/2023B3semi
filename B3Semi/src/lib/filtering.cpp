@@ -47,9 +47,9 @@ ImageMat median(const ImageMat &gray_img)
   ImageMat median_img = gray_img;
   std::vector<int> pixels(9);
 
-  for (int y = 1; y < gray_img.m_width - 1; y++)
+  for (int y = 1; y < gray_img.m_height - 1; y++)
   {
-    for (int x = 1; x < gray_img.m_height - 1; x++)
+    for (int x = 1; x < gray_img.m_width - 1; x++)
     {
       pixels[0] = median_img.m_pixels[((x - 1) + (y - 1) * gray_img.m_width)];
       pixels[1] = median_img.m_pixels[(x + (y - 1) * gray_img.m_width)];
