@@ -13,7 +13,7 @@
 - 
 
 ##  色空間と表色系
-RGB(赤、緑、青)の3色は、光の3つの基本的な成分を表すカラーモデルです。RGBモデルは、コンピュータグラフィックスやディスプレイ技術に非常に適していますが、それぞれの色が直線的に組み合わさるため、人間の視覚に基づいた色再現には制約があります。人間の視覚は、RGBの三成分だけで完全に説明できないほど複雑です。
+<span style="color: red">R</span><span style="color: green">G</span><span style="color: blue">B</span>(赤、緑、青)の3色は、光の3つの基本的な成分を表すカラーモデルです。RGBモデルは、コンピュータグラフィックスやディスプレイ技術に非常に適していますが、それぞれの色が直線的に組み合わさるため、人間の視覚に基づいた色再現には制約があります。人間の視覚は、RGBの三成分だけで完全に説明できないほど複雑です。
 
 人間の視覚システムは、RGBでは表現しきれない色差や色の感知特性を持っています。特に、人間の視覚はL錐体(赤錐体)、M錐体(緑錐体)、S錐体(青錐体)の3つの錐体細胞からの出力信号を受け取っており、これらの錐体細胞の感受性は一般的なRGBモデルとは異なると考えられています。したがって、特定の色を正確に再現するためには、RGBモデルだけでは不十分なのです。
 
@@ -45,15 +45,15 @@ HSLモデルでは色を次の3要素で構成し、表現します。
 色相は通常、色のスペクトル上の位置で表現され、円環状になります。これは、色相が連続的で循環的であることを示しています。一般的な色相環では、0°(または360°)が赤色を示し、60°が黄色、120°が緑、180°がシアン(青緑)、240°が青、300°がマゼンタ(赤紫)など、色相の基本的なカテゴリーが配置されています。
 
 色相は以下の式で求めることができます。
-
-$H = \left\{\begin{array}{ll}
-undefined & (if MAX = MIN) \\ \\
-60^\circ \times \frac{G-B}{MAX-MIN}+0^\circ & (if \, MAX = R \; and \;G \geqq B) \\ \\
-60^\circ \times \frac{G-B}{MAX-MIN}+360^\circ & (if \, MAX = R \: and \: G < B) \\ \\
-60^\circ \times \frac{B-R}{MAX-MIN}+120^\circ & (if \, MAX = G) \\ \\
-60^\circ \times \frac{R-G}{MAX-MIN}+240^\circ & (if \, MAX = B)
-\end{array} \right.$
-
+```math
+H = \left\{\begin{array}{ll}
+undefined & (if \quad MAX = MIN) \\ \\
+60^\circ \times \frac{G-B}{MAX-MIN}+0^\circ & (if \quad MAX = R \; and \;G \geqq B) \\ \\
+60^\circ \times \frac{G-B}{MAX-MIN}+360^\circ & (if \quad MAX = R \: and \: G < B) \\ \\
+60^\circ \times \frac{B-R}{MAX-MIN}+120^\circ & (if \quad MAX = G) \\ \\
+60^\circ \times \frac{R-G}{MAX-MIN}+240^\circ & (if \quad MAX = B)
+\end{array} \right.
+```
 
 ### 彩度(Saturation)
 
@@ -62,22 +62,22 @@ undefined & (if MAX = MIN) \\ \\
 彩度は、特定の色が白または灰色からどれだけ遠いか、または色がその純度を維持しているかを示します。高い彩度の色は、その色が "純粋" であると見なされ、色相が支配的であると感じられます。一方、低い彩度の色は、色相に比べて白または灰色が支配的で、より淡い、より灰色がかった外観を持つことがあります。
 
 彩度は以下のような計算式で求めることができます。
-
-$S = \left\{ \begin{array}{ll}
-0 & (if L = 0 \; or \; MAX=MIN) \\ \\
-\frac{MAX-MIN}{MAX+MIN} = \frac{MAX-MIN}{2L} & (if \, 0 < L \leqq \frac{1}{2}) \\ \\
-\frac{MAX-MIN}{2-(MAX+MIN)} = \frac{MAX-MIN}{2-2L} & (if \, L > \frac{1}{2}) 
-\end{array} \right.$
-
+```math
+S = \left\{ \begin{array}{ll}
+0 & (if \quad L = 0 \; or \; MAX=MIN) \\ \\
+\frac{MAX-MIN}{MAX+MIN} = \frac{MAX-MIN}{2L} & (if \quad 0 < L \leqq \frac{1}{2}) \\ \\
+\frac{MAX-MIN}{2-(MAX+MIN)} = \frac{MAX-MIN}{2-2L} & (if \quad L > \frac{1}{2}) 
+\end{array} \right.
+```
 
 ### 明度(Lightness)
 
 明度(Lightness)は、色の明るさまたは輝度を示す指標です。明度は、色がどれだけ明るいか、またはどれだけ暗いかを評価するために使用されます。色の明度は、色が白色または黒色からどれだけ遠いかを示します。
 
 明度は以下のような計算式で求めることができます。
-
-$L = \frac{MAX-MIN}{2}$ 
-
+```math
+L = \frac{MAX-MIN}{2} 
+```
 
 
 これらのパラメータを個別に調整することで、RGBモデルだけでは操作が難しいような処理を簡単に行うことが可能となります。例えば、画像をより明るくしたい場合について、RGBモデルだけの操作では明るさだけでなく濃度も同時にパラメータとして操作されてしまいますが、RGBモデルをHSLモデルに変換、HSLモデルのパラメータ調整、HSLモデルを再びRGBモデルに戻すことで、明るさだけを任意に調節することが可能です。
