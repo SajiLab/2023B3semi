@@ -79,9 +79,8 @@ std::array<ImageMatD, 2> extract_edge(const ImageMat &gray_image) // 例はprewi
   {
     for(int x = 0; x < edge_angle.m_width; x++)
     {
-      //
-      // 処理を記述
-      //
+       double norm = (edge_angle.getPixel(x, y, 0) - min_angle) / (max_angle - min_angle) * 255.0;
+       edge_angle.setPixel(x, y, 0, norm);
     }
   }
 
