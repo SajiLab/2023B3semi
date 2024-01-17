@@ -97,7 +97,7 @@ $\rho = x cos \theta + y sin \theta \ \ \ \ \ \ \ - (3)$
 そこでその問題を解決するため，直線の描画を媒介変数を用いた式に書き換え，その出力が直線を検出していることを確認してください．
 
 <div style="text-align: center;">
-<img src = "semi_img/6_detected.png" width="400">
+<img src = "semi_img/6_detected_many_lines.png" width="400">
 
 図7 直線が複数検出される例
 </div>
