@@ -112,7 +112,7 @@ ImageMat draw_line(const ImageMatI &hough_image, const ImageMat &edge_strength)
       {
         int bi_x, bi_y;
         int new_index;
-        if (0 < theta && theta <= 90)
+        if (10 < theta && theta < 170)
         {
           for (bi_x = 0; bi_x < edge_strength.m_width; bi_x++)
           {
